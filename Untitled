@@ -1,0 +1,159 @@
+# Bookmarks Info
+
+## Active List
+
+- **root**
+
+## Statistics
+
+- Total Bookmarks: `0`
+
+- Total Lists: `0`
+
+- Database Location: `/Users/mdsaeidanwar/.local/share/nvim/bookmarks.sqlite.db`
+
+- Backup Location: `/Users/mdsaeidanwar/.local/share/nvim/bookmarks.backup`
+
+## Configuration
+
+```lua
+query = {
+  keymap = {}
+}
+navigation = {
+  next_prev_wraparound_same_file = true
+}
+backup = {
+  delay = 5,
+  enabled = false
+}
+calibrate = {
+  auto_calibrate_cur_buf = true,
+  show_calibrate_logs = true
+}
+commands = {
+  create_project_list = <function 1>,
+  mark_warning = <function 2>,
+  open_bookmark_tree = <function 3>
+}
+picker = {
+  sort_by = "last_visited"
+}
+treeview = {
+  active_list_icon = "󰮔 ",
+  highlights = {
+    active_list = {
+      bg = "#2C323C",
+      bold = true,
+      fg = "#ffffff"
+    }
+  },
+  keymap = {
+    ["+"] = {
+      action = "add_to_aider",
+      desc = "Add to Aider"
+    },
+    ["-"] = {
+      action = "drop_from_aider",
+      desc = "Drop from Aider"
+    },
+    ["."] = {
+      action = "set_root",
+      desc = "Set current list as root of the tree view, also set as active list"
+    },
+    ["<C-o>"] = {
+      action = <function 1>,
+      desc = "Open the current node with system default software"
+    },
+    ["<ESC>"] = {
+      action = "quit",
+      desc = "Close the tree view window"
+    },
+    ["<localleader>j"] = {
+      action = "move_down",
+      desc = "Move current node down in the list"
+    },
+    ["<localleader>k"] = {
+      action = "move_up",
+      desc = "Move current node up in the list"
+    },
+    ["="] = {
+      action = "add_to_aider_read_only",
+      desc = "Add to Aider as read-only"
+    },
+    ["?"] = {
+      action = "show_help",
+      desc = "Show help panel with available keymaps"
+    },
+    D = {
+      action = "delete",
+      desc = "Delete current node"
+    },
+    P = {
+      action = "preview",
+      desc = "Preview bookmark content"
+    },
+    R = {
+      action = "refresh",
+      desc = "Reload and redraw the tree view"
+    },
+    a = {
+      action = "create_list",
+      desc = "Create a new list under the current node"
+    },
+    c = {
+      action = "copy",
+      desc = "Copy node"
+    },
+    g = {
+      action = "goto",
+      desc = "Go to bookmark location in previous window"
+    },
+    i = {
+      action = "show_info",
+      desc = "Show node info"
+    },
+    m = {
+      action = "set_active",
+      desc = "Set current list as the active list for bookmarks"
+    },
+    o = {
+      action = "toggle",
+      desc = "Toggle list expansion or go to bookmark location"
+    },
+    p = {
+      action = "paste",
+      desc = "Paste node"
+    },
+    q = {
+      action = "quit",
+      desc = "Close the tree view window"
+    },
+    r = {
+      action = "rename",
+      desc = "Rename current node"
+    },
+    t = {
+      action = "reverse",
+      desc = "Reverse the order of nodes in the tree view"
+    },
+    u = {
+      action = "level_up",
+      desc = "Navigate up one level in the tree hierarchy"
+    },
+    x = {
+      action = "cut",
+      desc = "Cut node"
+    }
+  },
+  window_split_dimension = 30
+}
+signs = {
+  desc_format = <function 1>,
+  mark = {
+    color = "red",
+    icon = "󰃁",
+    line_bg = "#572626"
+  }
+}
+```
