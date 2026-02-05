@@ -13,7 +13,8 @@ return {
 
     -- 2. Setup the plugin
     require('bookmarks').setup {
-      save_domain = 'local', -- Saves marks for this project
+      save_domain = 'project', -- Saves marks for this project
+      project_root = vim.fn.getcwd(),
     }
 
     -- 3. KEYMAPS

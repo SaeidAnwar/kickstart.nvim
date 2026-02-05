@@ -730,6 +730,7 @@ require('lazy').setup({
       vim.list_extend(ensure_installed, {
         'stylua', -- Used to format Lua code
         'clang-format',
+        'ruff',
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
@@ -784,10 +785,10 @@ require('lazy').setup({
         c = { 'clang-format' },
         cpp = { 'clang-format' },
         glsl = { 'clang-format' },
-        -- java = { 'clang-format' },
+        python = { 'ruff_format' },
         lua = { 'stylua' },
+        -- java = { 'clang-format' },
         -- Conform can also run multiple formatters sequentially
-        -- python = { "isort", "black" },
         --
         -- You can use 'stop_after_first' to run the first available formatter from the list
         -- javascript = { "prettierd", "prettier", stop_after_first = true },
@@ -937,8 +938,8 @@ require('lazy').setup({
 
         styles = {
           bold = true,
-          italic = false,
-          transparency = false,
+          italic = true,
+          transparency = true,
         },
       }
 
@@ -1044,6 +1045,7 @@ require('lazy').setup({
   require 'kickstart.plugins.nvim-jdtls',
   require 'kickstart.plugins.bookmarks',
   require 'kickstart.plugins.nvim-treesitter-context',
+  require 'kickstart.plugins.opencode',
 
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
   --    This is the easiest way to modularize your config.
