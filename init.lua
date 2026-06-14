@@ -694,8 +694,34 @@ require('lazy').setup({
         --    https://github.com/pmizio/typescript-tools.nvim
         --
         -- But for many setups, the LSP (`ts_ls`) will work just fine
-        -- ts_ls = {},
-        --
+        ts_ls = {
+          init_options = {
+            -- This forces the underlying TypeScript server to format with 2 spaces
+            formatOptions = {
+              indentSize = 2,
+              tabSize = 2,
+              convertTabsToSpaces = true,
+            },
+          },
+          settings = {
+            javascript = {
+              format = {
+                indentSize = 2,
+                tabSize = 2,
+              },
+            },
+            typescript = {
+              format = {
+                indentSize = 2,
+                tabSize = 2,
+              },
+            },
+          },
+          on_attach = function(client, bufnr)
+            -- Ensure the client permissions are open
+            client.server_capabilities.documentFormattingProvider = true
+          end,
+        }, --
 
         lua_ls = {
           -- cmd = { ... },
@@ -731,6 +757,7 @@ require('lazy').setup({
         'stylua', -- Used to format Lua code
         'clang-format',
         'ruff',
+        'ts_ls',
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
@@ -787,6 +814,10 @@ require('lazy').setup({
         glsl = { 'clang-format' },
         python = { 'ruff_format' },
         lua = { 'stylua' },
+        javascript = { 'ts_ls' },
+        typescript = { 'ts_ls' },
+        javascriptreact = { 'ts_ls' },
+        typescriptreact = { 'ts_ls' },
         -- java = { 'clang-format' },
         -- Conform can also run multiple formatters sequentially
         --
@@ -797,7 +828,7 @@ require('lazy').setup({
       formatters = {
         ['clang-format'] = {
           prepend_args = {
-            '-style={BasedOnStyle: Google, IndentWidth: 4, ColumnLimit: 100}',
+            '-style={BasedOnStyle: Google, IndentWidth: 2, ColumnLimit: 100}',
           },
         },
       },
@@ -993,7 +1024,7 @@ require('lazy').setup({
     dependencies = {
       'nvim-treesitter/nvim-treesitter-textobjects',
     },
-    main = 'nvim-treesitter.configs', -- Sets main module to use for opts
+    main = 'nvim-treesitter.config', -- Sets main module to use for opts
     -- [[ Configure Treesitter ]] See `:help nvim-treesitter`
     opts = {
       ensure_installed = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc', 'java' },
