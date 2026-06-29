@@ -166,9 +166,9 @@ vim.o.scrolloff = 10
 -- See `:help 'confirm'`
 vim.o.confirm = true
 
-vim.opt.tabstop = 4
-vim.opt.shiftwidth = 4
-vim.opt.softtabstop = 4
+vim.opt.tabstop = 2
+vim.opt.shiftwidth = 2
+vim.opt.softtabstop = 2
 vim.opt.expandtab = true
 
 -- [[ Basic Keymaps ]]
@@ -223,6 +223,27 @@ vim.api.nvim_create_autocmd('TextYankPost', {
     vim.hl.on_yank()
   end,
 })
+
+-- auto file sync multiple location saves
+vim.opt.autoread = true
+
+-- Create a background timer using Neovim's built-in event loop
+local watch_timer = vim.loop.new_timer()
+
+-- Start the timer: wait 500ms before starting, then run every 500ms (twice a second)
+watch_timer:start(
+  500,
+  500,
+  vim.schedule_wrap(function()
+    -- Get the current buffer number
+    local bufnr = vim.api.nvim_get_current_buf()
+
+    -- Only check normal files that you haven't actively changed inside Neovim
+    if vim.api.nvim_buf_is_valid(bufnr) and vim.bo[bufnr].buftype == '' and not vim.bo[bufnr].modified then
+      vim.cmd 'silent! checktime'
+    end
+  end)
+)
 
 -- [[ Install `lazy.nvim` plugin manager ]]
 --    See `:help lazy.nvim.txt` or https://github.com/folke/lazy.nvim for more info
